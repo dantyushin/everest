@@ -1,0 +1,50 @@
+.footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 2.1875rem 6.8125rem 2.5rem 5rem;
+
+  height: 11.0625rem;
+
+  background: #222c58;
+  border-radius: 60px 60px 0px 0px;
+
+  font-weight: 100;
+  font-style: normal;
+  font-size: 1.5rem;
+  line-height: 1.8125rem;
+
+  color: #fff;
+}
+
+.schedule {
+  width: 21.375rem;
+  height: 6.5rem;
+}
+
+.workingDays {
+  padding-right: 1.75rem;
+}
+
+.location {
+  margin-top: 1rem;
+}
+
+.social {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.links {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 20.875rem;
+}
+
+.contacts {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}

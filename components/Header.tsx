@@ -8,12 +8,16 @@ export default function Header() {
       <header className={styles.header}>
         <div className={styles.logo}>
           <Link href={'/'}>
-            <Image src={'/logo.svg'} alt={'logo'} width={45} height={25} />
+            <Image src={'/logo.svg'} alt={'logo'} width={60} height={33.33} />
           </Link>
         </div>
         <div className={styles.contacts}>
-          <div className={styles.email}>everest-baro@mail.ru</div>
-          <div className={styles.phone}>+7 (911) 109-13-99</div>
+          <a href="mailto:everest-baro@mail.ru" className={styles.email}>
+            everest-baro@mail.ru
+          </a>
+          <a href="tel:+79111091399" className={styles.phone}>
+            +7 (911) 109-13-99
+          </a>
         </div>
         <nav className={styles.navList}>
           <li>
