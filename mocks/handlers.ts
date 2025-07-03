@@ -26,7 +26,7 @@ export const handlers = [
 
     const patternOnName = /[A-ZА-Яa-zа-я]+/;
     const digits = parsePhone(phone);
-    const patternOnPhone = /(\d{10})/;
+    const patternOnPhone = /^\d{10}$/;
 
     if (!patternOnName.test(name) || !patternOnPhone.test(digits)) {
       return HttpResponse.json(
