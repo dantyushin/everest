@@ -1,0 +1,21 @@
+.learnMore {
+  position: absolute;
+  width: 16.9375rem;
+  height: 4rem;
+  top: 13rem;
+  right: 8rem;
+
+  cursor: pointer;
+
+  background: var(--main-color);
+  border-radius: 1rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  line-height: 1.5rem;
+  text-align: center;
+
+  color: var(--white-color);
+}

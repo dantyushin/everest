@@ -1,15 +1,15 @@
 'use client';
+
 import { Dispatch, SetStateAction } from 'react';
 import * as Toast from '@radix-ui/react-toast';
 import styles from '@/styles/Toast.module.css';
 
-export default function MyToast({
-  open,
-  setOpen,
-}: {
+interface ToastProps {
   open: boolean;
   setOpen: Dispatch<SetStateAction<boolean>>;
-}) {
+}
+
+export default function MyToast({ open, setOpen }: ToastProps) {
   return (
     <>
       <Toast.Provider swipeDirection="right">
@@ -35,7 +35,6 @@ export default function MyToast({
             />
           </Toast.Action>
         </Toast.Root>
-
         <Toast.Viewport className={styles.toastViewport} />
       </Toast.Provider>
     </>

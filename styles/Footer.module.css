@@ -6,7 +6,7 @@
 
   height: 11.0625rem;
 
-  background: #222c58;
+  background: var(--main-color);
   border-radius: 60px 60px 0px 0px;
 
   font-weight: 100;

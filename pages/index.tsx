@@ -1,49 +1,11 @@
-import { useState } from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
 import { Button, Section, Strong } from '@radix-ui/themes';
+import Connect from '@/components/ConnectMain';
 import styles from '@/styles/Home.module.css';
+import LearnMoreButton from '@/components/LearnMoreButton';
 
 export default function Home() {
-  const [error, setError] = useState('');
-  const [success, setSuccess] = useState('');
-
-  const handleSubmit = async (formData: FormData) => {
-    const name = formData.get('name');
-    const phone = formData.get('phone');
-
-    try {
-      const response = await fetch('/api/send', {
-        method: 'POST',
-        body: JSON.stringify({ name, phone }),
-      });
-      const res = await response.json();
-
-      if (!response.ok) {
-        throw new Error(res.message);
-      }
-      setSuccess(res.message);
-      const timeout = setTimeout(() => {
-        setSuccess('');
-        clearTimeout(timeout);
-      }, 2000);
-    } catch (error) {
-      if (error instanceof Error) {
-        setError(error.message);
-        const timeout = setTimeout(() => {
-          setError('');
-          clearTimeout(timeout);
-        }, 2000);
-      } else {
-        console.error('Неизвестная ошибка');
-      }
-    }
-  };
-
-  const onClickLearnMore = () => {
-    const button = document.getElementById('presentation');
-    button!.click();
-  };
   return (
     <>
       <Head>
@@ -52,12 +14,12 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
       <main className={styles.main}>
-        <h1 className={styles.title}>
-          <Strong>Барокамеры Эверест</Strong> - капсулы нового поколения
-        </h1>
-        <Button className={styles.learnMore} onClick={onClickLearnMore}>
-          Узнать подробнее
-        </Button>
+        <Section>
+          <h1 className={styles.title}>
+            <Strong>Барокамеры Эверест</Strong> - капсулы нового поколения
+          </h1>
+          <LearnMoreButton />
+        </Section>
         <Section>
           <ul className={styles.list}>
             <li>
@@ -74,7 +36,7 @@ export default function Home() {
             Компания “Эверест” - официальный производитель кислородных камер
             нового поколения
           </h2>
-          <Section className={styles.advantages}>
+          <div className={styles.advantages}>
             <div className={styles.cost}>
               <img src={'/ruble.svg'} />
               <div>Привлекательная стоимость и высокое качество продукции</div>
@@ -102,7 +64,7 @@ export default function Home() {
               <div className={styles.strongText}>5 лет</div>
               <div>Опыта работы компании</div>
             </div>
-          </Section>
+          </div>
         </Section>
         <Section className={styles.links}>
           <Link href="/">
@@ -164,35 +126,7 @@ export default function Home() {
             className={styles.challengesImages}
           />
         </Section>
-        <Section className={styles.connect}>
-          <h2 className={styles.titleConnect}>
-            Получите бесплатную консультацию от эксперта
-          </h2>
-          <form className={styles.form} action={handleSubmit}>
-            <input
-              name="name"
-              placeholder="Ваше имя"
-              className={`${styles.input} ${error ? styles.inputError : ''}`}
-            />
-            <input
-              name="phone"
-              placeholder="Ваш номер телефона"
-              className={`${styles.input} ${error ? styles.inputError : ''}`}
-            />
-            <div className={styles.message}>
-              {error && <p className={styles.error}>{error}</p>}
-              {success && <p className={styles.success}>{success}</p>}
-            </div>
-            <Button type="submit" className={styles.formButton}>
-              Оставить заявку
-            </Button>
-          </form>
-          <img
-            src="/connect.svg"
-            alt="connect.svg"
-            className={styles.imageConnect}
-          />
-        </Section>
+        <Connect />
       </main>
     </>
   );
