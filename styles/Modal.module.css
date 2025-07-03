@@ -1,0 +1,93 @@
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modalContent {
+  background: transparent;
+  padding: 2rem;
+  border-radius: 0.5rem;
+  position: relative;
+}
+
+.closeButton {
+  position: absolute;
+  top: 2.5rem;
+  right: 2.5rem;
+  cursor: pointer;
+}
+
+.titleConnect {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 1.25rem;
+  line-height: 1.5rem;
+  text-align: center;
+
+  color: #222c58;
+}
+
+.form {
+  width: 41.125rem;
+  height: 25.875rem;
+
+  background: #ffffff;
+  box-shadow: -4px 4px 20.4px rgba(0, 0, 0, 0.25);
+  border-radius: 39px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 1rem;
+  margin-left: 2rem;
+  justify-content: center;
+  align-items: center;
+}
+.input {
+  box-sizing: border-box;
+
+  width: 33.1875rem;
+  height: 3.3125rem;
+
+  background: #ffffff;
+  border: 2px solid #1a2847;
+  border-radius: 15px;
+  padding: 1.5rem;
+
+  font-size: 1rem;
+}
+.formButton {
+  width: 33.1875rem;
+  min-height: 3.25rem;
+
+  background: #222c58;
+  border-radius: 15px;
+  color: white;
+  font-size: 1.2rem;
+
+  cursor: pointer;
+}
+
+.errorInput {
+  border: 2px solid red;
+  color: red;
+}
+
+.error {
+  color: red;
+  font-size: 1rem;
+  min-height: 1.8rem;
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}

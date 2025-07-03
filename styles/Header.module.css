@@ -22,7 +22,7 @@
 
   color: #000000;
 
-  margin-right: 5.5rem;
+  margin-right: 2rem;
 }
 
 .email {
@@ -37,7 +37,7 @@
 
 .navList {
   display: flex;
-  gap: 4.0625rem;
+  gap: 4rem;
   list-style: none;
   flex: none;
   flex-grow: 0;
@@ -57,6 +57,8 @@
   border: 1px solid #222c58;
   border-radius: 0.375rem;
   padding: 0.5rem;
+
+  cursor: pointer;
 
   font-style: normal;
   font-weight: 300;

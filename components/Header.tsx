@@ -1,10 +1,17 @@
+import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import styles from '../styles/Header.module.css';
+import Modal from './Modal';
+import styles from '@/styles/Header.module.css';
+import Head from 'next/head';
 
 export default function Header() {
+  const [isOpen, setIsOpen] = useState(false);
   return (
     <>
+    <Head>
+      <link rel="icon" href="/logo.png" />
+    </Head>
       <header className={styles.header}>
         <div className={styles.logo}>
           <Link href={'/'}>
@@ -21,25 +28,32 @@ export default function Header() {
         </div>
         <nav className={styles.navList}>
           <li>
-            <Link href={'/equipment'}>ОБОРУДОВАНИЕ</Link>
+            <Link href={'/'}>ОБОРУДОВАНИЕ</Link>
           </li>
           <li>
-            <Link href={'/application'}>ПРИМЕНЕНИЕ</Link>
+            <Link href={'/'}>ПРИМЕНЕНИЕ</Link>
           </li>
           <li>
-            <Link href={'/articles'}>СТАТЬИ</Link>
+            <Link href={'/'}>СТАТЬИ</Link>
           </li>
           <li>
-            <Link href={'/specifications'}>ПОКАЗАНИЯ</Link>
+            <Link href={'/'}>ПОКАЗАНИЯ</Link>
           </li>
           <li>
-            <Link href={'/about'}>О КОМПАНИИ</Link>
+            <Link href={'/'}>О КОМПАНИИ</Link>
           </li>
           <li>
-            <Link href={'/contacts'}>КОНТАКТЫ</Link>
+            <Link href={'/'}>КОНТАКТЫ</Link>
           </li>
         </nav>
-        <button className={styles.button}>ПОЛУЧИТЬ ПРЕЗЕНТАЦИЮ</button>
+        <button
+          id="presentation"
+          className={styles.button}
+          onClick={() => setIsOpen(true)}
+        >
+          ПОЛУЧИТЬ ПРЕЗЕНТАЦИЮ
+        </button>
+        <Modal isOpen={isOpen} onClose={() => setIsOpen(false)} />
       </header>
       <div className={styles.row}></div>
     </>
