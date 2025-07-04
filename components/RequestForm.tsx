@@ -2,6 +2,7 @@
 
 import { FormEvent, useState } from 'react';
 import { Button } from '@radix-ui/themes';
+import { IMaskInput } from 'react-imask';
 import styles from '@/styles/Modal.module.css';
 
 interface RequestFormProps {
@@ -10,13 +11,11 @@ interface RequestFormProps {
 
 export default function RequestForm({ onSuccess }: RequestFormProps) {
   const [error, setError] = useState('');
+  const [name, setName] = useState('');
+  const [phone, setPhone] = useState('');
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
-    const formData = new FormData(e.currentTarget);
-    const name = formData.get('name');
-    const phone = formData.get('phone');
 
     try {
       const response = await fetch('/api/send', {
@@ -44,6 +43,13 @@ export default function RequestForm({ onSuccess }: RequestFormProps) {
     }
   };
 
+  const handleNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+
+    const lettersOnly = value.replace(/[^a-zA-Zа-яА-ЯёЁ\s]/g, '');
+    setName(lettersOnly);
+  };
+
   return (
     <form className={styles.form} onSubmit={handleSubmit}>
       <h2 className={styles.titleConnect}>
@@ -52,11 +58,16 @@ export default function RequestForm({ onSuccess }: RequestFormProps) {
       <input
         name="name"
         placeholder="Ваше имя"
+        value={name}
+        onChange={handleNameChange}
         className={`${styles.input} ${error ? styles.errorInput : ''}`}
       />
-      <input
-        name="phone"
+      <IMaskInput
+        mask="+7 (000) 000-00-00"
+        value={phone}
+        onAccept={(value) => setPhone(value)}
         placeholder="Ваш номер телефона"
+        name="phone"
         type="tel"
         className={`${styles.input} ${error ? styles.errorInput : ''}`}
       />

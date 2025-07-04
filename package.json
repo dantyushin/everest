@@ -5,25 +5,20 @@
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build",
-    "start": "next start",
+    "start": "next build && next start",
     "lint": "next lint"
   },
   "dependencies": {
     "@radix-ui/themes": "^3.2.1",
     "next": "15.3.4",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.0.0",
+    "react-imask": "^7.6.1"
   },
   "devDependencies": {
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
-    "msw": "^2.10.2",
     "typescript": "^5"
-  },
-  "msw": {
-    "workerDirectory": [
-      "public"
-    ]
   }
 }

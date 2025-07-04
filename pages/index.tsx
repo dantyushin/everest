@@ -64,6 +64,7 @@ export default function Home() {
               <div className={styles.strongText}>5 лет</div>
               <div>Опыта работы компании</div>
             </div>
+            <div></div>
           </div>
         </Section>
         <Section className={styles.links}>
