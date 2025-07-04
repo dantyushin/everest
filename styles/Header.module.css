@@ -22,7 +22,7 @@
 
   color: #000000;
 
-  margin-right: 5.5rem;
+  margin-right: 2rem;
 }
 
 .email {
@@ -37,7 +37,7 @@
 
 .navList {
   display: flex;
-  gap: 4.0625rem;
+  gap: 4rem;
   list-style: none;
   flex: none;
   flex-grow: 0;
@@ -53,10 +53,12 @@
 
 .button {
   margin-left: auto;
-  background: #222c58;
-  border: 1px solid #222c58;
+  background: var(--main-color);
+  border: 1px solid var(--main-color);
   border-radius: 0.375rem;
   padding: 0.5rem;
+
+  cursor: pointer;
 
   font-style: normal;
   font-weight: 300;
@@ -64,9 +66,9 @@
   line-height: calc(13/16 * 1rem);
   text-align: center;
 
-  color: #ffffff;
+  color: var(--white-color)
 }
 .row {
   height: 3px;
-  background: #222c58;
+  background: var(--main-color);
 }
