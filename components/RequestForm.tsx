@@ -46,7 +46,7 @@ export default function RequestForm({ onSuccess }: RequestFormProps) {
   const handleNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
 
-    const lettersOnly = value.replace(/[^a-zA-Zа-яА-ЯёЁ\s]/g, '');
+    const lettersOnly = value.replace(/[^a-zA-Zа-яА-ЯёЁ-\s]/g, '');
     setName(lettersOnly);
   };
 

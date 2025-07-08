@@ -15,7 +15,7 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
       .json({ message: 'Заполните все поля и попробуйте снова.' });
   }
 
-  const patternOnName = /[A-ZА-Яa-zа-я]+/;
+  const patternOnName = /[A-ZА-Яa-zа-я\-]+/;
   const digits = phone.replace(/\D/g, '');
   const patternOnPhone = /^(7|8)\d{10}$/;
 
@@ -33,7 +33,7 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
 
   const logLine = `${moscowTime} — Имя: ${name}, Номер телефона: ${phone}\n`;
   
-  const filePath = path.join(process.cwd(), 'form_submissions.txt');
+  const filePath = path.join(process.cwd(), '/data/form_submissions.txt');
 
   fs.appendFile(filePath, logLine, (err) => {
     if (err) {

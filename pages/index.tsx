@@ -1,9 +1,9 @@
 import Head from 'next/head';
 import Link from 'next/link';
 import { Button, Section, Strong } from '@radix-ui/themes';
-import Connect from '@/components/ConnectMain';
 import styles from '@/styles/Home.module.css';
 import LearnMoreButton from '@/components/LearnMoreButton';
+import ConnectForm from '@/components/ConnectForm';
 
 export default function Home() {
   return (
@@ -127,7 +127,19 @@ export default function Home() {
             className={styles.challengesImages}
           />
         </Section>
-        <Connect />
+        <Section className={styles.connect}>
+          <h2 className={styles.titleConnect}>
+            Получите бесплатную консультацию от эксперта
+          </h2>
+          <div className={styles.form}>
+            <ConnectForm />
+          </div>
+          <img
+            src="/connect.svg"
+            alt="connect.svg"
+            className={styles.imageConnect}
+          />
+        </Section>
       </main>
     </>
   );
