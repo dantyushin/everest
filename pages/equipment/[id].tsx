@@ -1,11 +1,11 @@
 import { useRouter } from 'next/router';
-import { barocams } from '@/data/barocams';
-import { Button, Section } from '@radix-ui/themes';
-import styles from '@/styles/EquipmentDetail.module.css';
+import Head from 'next/head';
+import { Section } from '@radix-ui/themes';
 import Reviews from '@/components/Reiews';
 import ConnectForm from '@/components/ConnectForm';
 import ReviewFormWithModal from '@/components/ReviewForm';
-import Head from 'next/head';
+import { barocams } from '@/data/barocams';
+import styles from '@/styles/EquipmentDetail.module.css';
 
 export default function EquipmentDetail() {
   const router = useRouter();
@@ -90,7 +90,7 @@ export default function EquipmentDetail() {
         <Section className={styles.presentation}>
           <h4 className={styles.presentationTitle}>Видеопрезентация</h4>
           <div>
-            <iframe src={video} className={styles.video} />
+            <iframe src={video} className={styles.video} title='Видеопрезентация'/>
           </div>
           <h4 className={styles.presentationTitle}>
             Получите бесплатную консультацию от эксперта

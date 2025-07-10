@@ -15,10 +15,10 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
       .json({ message: 'Заполните все поля и попробуйте снова.' });
   }
 
-  const patternOnName = /[A-ZА-Яa-zа-я\-]+/;
+  const patternOnName = /[A-ZА-Яa-zа-я-]+/;
   const digits = phone.replace(/\D/g, '');
-  const patternOnPhone = /^(7|8)\d{10}$/;
-  const patternOnEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  const patternOnPhone = /^[7-8]\d{10}$/;
+  const patternOnEmail = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
   if (
     !patternOnName.test(name) ||

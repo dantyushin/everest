@@ -28,9 +28,7 @@
 .inputSuccess {
   border: 2px solid var(--green-color);
 }
-.inputError {
-  border: 2px solid var(--red-color);
-}
+
 .message {
   height: 1.5rem;
 }
@@ -67,6 +65,9 @@
   font-weight: 200;
   font-size: 1rem;
   line-height: 1.5rem;
+}
+.inputError {
+  border: 2px solid var(--red-color);
 }
 
 .buttonReview {

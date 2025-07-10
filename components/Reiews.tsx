@@ -1,5 +1,5 @@
 'use client';
-import React, { useState } from 'react';
+import { useCallback, useState } from 'react';
 import styles from '@/styles/Reviews.module.css';
 
 const mockReviews = [
@@ -11,11 +11,16 @@ const mockReviews = [
 export default function Reviews() {
   const [isOpen, setIsOpen] = useState(false);
 
+  const memoizedOpen = useCallback(() => setIsOpen(true), []);
+  const memoizedClose = useCallback(() => setIsOpen(false), []);
+
   return (
     <>
       <div
         className={styles.reviewBlock}
-        onClick={() => setIsOpen(true)}
+        onClick={memoizedOpen}
+        onKeyDown={memoizedOpen}
+        role='button'
       >
         <img
           src="/reviews_clear.svg"
@@ -30,10 +35,16 @@ export default function Reviews() {
       </div>
 
       {isOpen && (
-        <div className={styles.modalOverlay} onClick={() => setIsOpen(false)}>
+        <div
+          className={styles.modalOverlay}
+          onClick={memoizedClose}
+          onKeyDown={memoizedClose}
+          role="button"
+        >
           <div
             className={styles.modalContent}
             onClick={(e) => e.stopPropagation()}
+            role="button"
           >
             {mockReviews.length === 0 ? (
               <p>Отзывов пока нет.</p>
@@ -50,10 +61,7 @@ export default function Reviews() {
                 ))}
               </div>
             )}
-            <button
-              className={styles.closeButton}
-              onClick={() => setIsOpen(false)}
-            />
+            <button className={styles.closeButton} onClick={memoizedClose} />
           </div>
         </div>
       )}

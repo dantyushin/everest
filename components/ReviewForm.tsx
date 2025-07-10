@@ -1,6 +1,6 @@
 'use client';
 
-import { FormEvent, useState } from 'react';
+import { FormEvent, use, useCallback, useState } from 'react';
 import { IMaskInput } from 'react-imask';
 import { Button } from '@radix-ui/themes';
 import Modal from './Modal';
@@ -8,7 +8,7 @@ import styles from '@/styles/ReviewForm.module.css';
 import MyToast from './Toast';
 
 interface ReviewFormProps {
-  onSuccess: () => void;
+  readonly onSuccess: () => void;
 }
 
 export default function ReviewFormWithModal() {
@@ -25,18 +25,20 @@ export default function ReviewFormWithModal() {
   };
 
   return (
-    <Button
-      className={styles.buttonReview}
-      onClick={() => setIsOpenModal(true)}
-    >
-      Оставить отзыв
+    <>
+      <Button
+        className={styles.buttonReview}
+        onClick={() => setIsOpenModal(true)}
+      >
+        Оставить отзыв
+      </Button>
       {isOpenModal && (
         <Modal isOpen={isOpenModal} onClose={() => setIsOpenModal(false)}>
           <ReviewForm onSuccess={handleSuccess} />
         </Modal>
       )}
       {showToast && <MyToast open={showToast} setOpen={setShowToast} />}
-    </Button>
+    </>
   );
 }
 
@@ -48,6 +50,13 @@ function ReviewForm({ onSuccess }: ReviewFormProps) {
   const [title, setTitle] = useState('');
   const [text, setText] = useState('');
   const [success, setSuccess] = useState('');
+
+  const showError = useCallback((message: string) => {
+    setError(message);
+    setTimeout(() => {
+      setError('');
+    }, 2000);
+  }, []);
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -66,17 +75,10 @@ function ReviewForm({ onSuccess }: ReviewFormProps) {
 
       onSuccess();
 
-      const timeout = setTimeout(() => {
-        setSuccess('');
-        clearTimeout(timeout);
-      }, 2000);
+      setTimeout(() => setSuccess(''), 2000);
     } catch (error) {
       if (error instanceof Error) {
-        setError(error.message);
-        const timeout = setTimeout(() => {
-          setError('');
-          clearTimeout(timeout);
-        }, 2000);
+        showError(error.message);
       } else {
         console.error('Неизвестная ошибка');
       }

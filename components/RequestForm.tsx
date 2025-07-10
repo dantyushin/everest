@@ -6,7 +6,7 @@ import { IMaskInput } from 'react-imask';
 import styles from '@/styles/Modal.module.css';
 
 interface RequestFormProps {
-  onSuccess: () => void;
+  readonly onSuccess: () => void;
 }
 
 export default function RequestForm({ onSuccess }: RequestFormProps) {

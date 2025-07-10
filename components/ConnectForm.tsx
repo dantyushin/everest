@@ -1,17 +1,20 @@
-import { FormEvent, useState } from 'react';
+import { FormEvent, useCallback, useState } from 'react';
 import { IMaskInput } from 'react-imask';
 import { Button } from '@radix-ui/themes';
 import styles from '@/styles/ConnectForm.module.css';
 
-interface FormProps {
-  onSuccess?: () => void;
-}
-
-export default function ConnectForm({ onSuccess }: FormProps) {
+export default function ConnectForm() {
   const [error, setError] = useState('');
   const [name, setName] = useState('');
   const [phone, setPhone] = useState('');
   const [success, setSuccess] = useState('');
+
+  const showError = useCallback((message: string) => {
+    setError(message);
+    setTimeout(() => {
+      setError('');
+    }, 2000);
+  }, []);
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -27,23 +30,15 @@ export default function ConnectForm({ onSuccess }: FormProps) {
       if (!response.ok) {
         throw new Error(res.message);
       }
-      if (onSuccess) onSuccess();
 
       setSuccess(res.message);
       setName('');
       setPhone('');
 
-      const timeout = setTimeout(() => {
-        setSuccess('');
-        clearTimeout(timeout);
-      }, 2000);
+      setTimeout(() => setSuccess(''), 2000);
     } catch (error) {
       if (error instanceof Error) {
-        setError(error.message);
-        const timeout = setTimeout(() => {
-          setError('');
-          clearTimeout(timeout);
-        }, 2000);
+        showError(error.message);
       } else {
         console.error('Неизвестная ошибка');
       }

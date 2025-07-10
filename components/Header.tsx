@@ -2,7 +2,7 @@ import Link from 'next/link';
 import styles from '@/styles/Header.module.css';
 
 interface HeaderProps {
-  children?: React.ReactNode;
+  readonly children?: React.ReactNode;
 }
 
 export default function Header({ children }: HeaderProps) {
