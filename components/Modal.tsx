@@ -24,19 +24,16 @@ export default function Modal({ isOpen, onClose, children }: ModalProps) {
   if (!isOpen) return null;
 
   return createPortal(
-    <div className={styles.modal} onClick={onClose} role="button">
-      <div
-        className={styles.modalContent}
-        onClick={(e) => e.stopPropagation()}
-        role="button"
-      >
-        <img
-          src="/close_icon.svg"
-          alt="close_icon.svg"
-          onClick={onClose}
-          className={styles.closeButton}
-          role='button'
-        />
+    <div
+      className={styles.modal}
+      onClick={onClose}
+      role="dialog"
+      aria-modal="true"
+    >
+      <div className={styles.modalContent} onClick={(e) => e.stopPropagation()}>
+        <button type="button" onClick={onClose} className={styles.closeButton}>
+          <img src="/close_icon.svg" alt="Закрыть" />
+        </button>
         {children}
       </div>
     </div>,

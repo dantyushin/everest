@@ -1,5 +1,6 @@
 'use client';
-import { useCallback, useState } from 'react';
+
+import { useState } from 'react';
 import styles from '@/styles/Reviews.module.css';
 
 const mockReviews = [
@@ -11,40 +12,32 @@ const mockReviews = [
 export default function Reviews() {
   const [isOpen, setIsOpen] = useState(false);
 
-  const memoizedOpen = useCallback(() => setIsOpen(true), []);
-  const memoizedClose = useCallback(() => setIsOpen(false), []);
-
   return (
     <>
-      <div
+      <button
+        type="button"
         className={styles.reviewBlock}
-        onClick={memoizedOpen}
-        onKeyDown={memoizedOpen}
-        role='button'
+        onClick={() => setIsOpen(true)}
       >
-        <img
-          src="/reviews_clear.svg"
-          alt="reviews.svg"
-          className={styles.image}
-        />
+        <img src="/reviews_clear.svg" alt="Отзывы" className={styles.image} />
         <img
           src="/reviews_hover.svg"
-          alt="reviews.svg"
+          alt=""
           className={styles.hover}
+          aria-hidden="true"
         />
-      </div>
+      </button>
 
       {isOpen && (
         <div
           className={styles.modalOverlay}
-          onClick={memoizedClose}
-          onKeyDown={memoizedClose}
-          role="button"
+          onClick={() => setIsOpen(false)}
+          role="dialog"
+          aria-modal="true"
         >
           <div
             className={styles.modalContent}
             onClick={(e) => e.stopPropagation()}
-            role="button"
           >
             {mockReviews.length === 0 ? (
               <p>Отзывов пока нет.</p>
@@ -54,14 +47,18 @@ export default function Reviews() {
                   <div key={review.id} className={styles.reviewItem}>
                     <img
                       src={review.src}
-                      alt="review"
+                      alt="Отзыв"
                       className={styles.reviewImage}
                     />
                   </div>
                 ))}
               </div>
             )}
-            <button className={styles.closeButton} onClick={memoizedClose} />
+            <button
+              type="button"
+              className={styles.closeButton}
+              onClick={() => setIsOpen(false)}
+            />
           </div>
         </div>
       )}

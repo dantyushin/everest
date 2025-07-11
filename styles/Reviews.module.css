@@ -2,6 +2,8 @@
   position: relative;
   padding: 2rem;
   cursor: pointer;
+  border: none;
+  background: transparent
 }
 .image {
   position: absolute;
@@ -42,6 +44,7 @@
   background: transparent;
   color: white;
   border: none;
+  background: transparent;
   cursor: pointer;
   border-radius: 4px;
   position: absolute;

@@ -1,11 +1,12 @@
 'use client';
 
-import { FormEvent, use, useCallback, useState } from 'react';
+import { FormEvent, useCallback, useState } from 'react';
 import { IMaskInput } from 'react-imask';
 import { Button } from '@radix-ui/themes';
 import Modal from './Modal';
 import styles from '@/styles/ReviewForm.module.css';
 import MyToast from './Toast';
+import { useFormCommon } from '@/hooks/useFormCommon';
 
 interface ReviewFormProps {
   readonly onSuccess: () => void;
@@ -37,26 +38,21 @@ export default function ReviewFormWithModal() {
           <ReviewForm onSuccess={handleSuccess} />
         </Modal>
       )}
-      {showToast && <MyToast open={showToast} setOpen={setShowToast} />}
+      {showToast && (
+        <MyToast open={showToast} setOpen={setShowToast}>
+          Спасибо за отзыв!
+        </MyToast>
+      )}
     </>
   );
 }
 
 function ReviewForm({ onSuccess }: ReviewFormProps) {
-  const [error, setError] = useState('');
-  const [name, setName] = useState('');
-  const [phone, setPhone] = useState('');
+  const { error, showError, name, phone, setPhone, handleNameChange } =
+    useFormCommon();
   const [email, setEmail] = useState('');
   const [title, setTitle] = useState('');
   const [text, setText] = useState('');
-  const [success, setSuccess] = useState('');
-
-  const showError = useCallback((message: string) => {
-    setError(message);
-    setTimeout(() => {
-      setError('');
-    }, 2000);
-  }, []);
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -74,8 +70,6 @@ function ReviewForm({ onSuccess }: ReviewFormProps) {
       }
 
       onSuccess();
-
-      setTimeout(() => setSuccess(''), 2000);
     } catch (error) {
       if (error instanceof Error) {
         showError(error.message);
@@ -85,12 +79,6 @@ function ReviewForm({ onSuccess }: ReviewFormProps) {
     }
   };
 
-  const handleNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = e.target.value;
-
-    const lettersOnly = value.replace(/[^a-zA-Zа-яА-ЯёЁ\-\s]/g, '');
-    setName(lettersOnly);
-  };
   return (
     <form className={styles.form} onSubmit={handleSubmit}>
       <h2>Оставить отзыв</h2>
@@ -139,7 +127,6 @@ function ReviewForm({ onSuccess }: ReviewFormProps) {
       />
       <div className={styles.message}>
         {error && <p className={styles.error}>{error}</p>}
-        {success && <p className={styles.success}>{success}</p>}
       </div>
       <Button type="submit" className={styles.formButton}>
         Оставить отзыв

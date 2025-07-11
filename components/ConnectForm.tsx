@@ -1,20 +1,13 @@
-import { FormEvent, useCallback, useState } from 'react';
+import { FormEvent, useState } from 'react';
 import { IMaskInput } from 'react-imask';
 import { Button } from '@radix-ui/themes';
 import styles from '@/styles/ConnectForm.module.css';
+import { useFormCommon } from '@/hooks/useFormCommon';
 
 export default function ConnectForm() {
-  const [error, setError] = useState('');
-  const [name, setName] = useState('');
-  const [phone, setPhone] = useState('');
+  const { error, showError, name, setName, phone, setPhone, handleNameChange } =
+    useFormCommon();
   const [success, setSuccess] = useState('');
-
-  const showError = useCallback((message: string) => {
-    setError(message);
-    setTimeout(() => {
-      setError('');
-    }, 2000);
-  }, []);
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -45,12 +38,6 @@ export default function ConnectForm() {
     }
   };
 
-  const handleNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = e.target.value;
-
-    const lettersOnly = value.replace(/[^a-zA-Zа-яА-ЯёЁ\-\s]/g, '');
-    setName(lettersOnly);
-  };
   return (
     <form className={styles.form} onSubmit={handleSubmit}>
       <input

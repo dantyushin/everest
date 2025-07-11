@@ -3,7 +3,11 @@
 import { Button } from '@radix-ui/themes';
 import styles from '@/styles/LearnMoreButton.module.css';
 
-export default function LinkToPresentation({ children }: { children: string }) {
+interface Props {
+  readonly children: string;
+}
+
+export default function LinkToPresentation({ children }: Props) {
   const onClickLearnMore = () => {
     const button = document.getElementById('presentation');
     button!.click();
