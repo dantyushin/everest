@@ -27,7 +27,6 @@
 }
 
 .toastAction {
-  border: none;
   color: var(--main-color);
   cursor: pointer;
   border: none;

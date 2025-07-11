@@ -12,7 +12,7 @@ type Barocam = {
   };
   video: string;
 };
-export const barocams: Barocam[] = [
+export const mockBarocams: Barocam[] = [
   {
     id: 1,
     title: 'Эверест 1.68',

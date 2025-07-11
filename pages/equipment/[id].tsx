@@ -4,14 +4,14 @@ import { Section } from '@radix-ui/themes';
 import Reviews from '@/components/Reiews';
 import ConnectForm from '@/components/ConnectForm';
 import ReviewFormWithModal from '@/components/ReviewForm';
-import { barocams } from '@/data/barocams';
+import { mockBarocams } from '@/data/barocams';
 import styles from '@/styles/EquipmentDetail.module.css';
 
 export default function EquipmentDetail() {
   const router = useRouter();
   const { id } = router.query;
 
-  const barocam = barocams.find((item) => item.id === Number(id));
+  const barocam = mockBarocams.find((item) => item.id === Number(id));
   const { title, description, cost, img, images, information, video } =
     barocam || {};
   if (!barocam) {
@@ -90,7 +90,11 @@ export default function EquipmentDetail() {
         <Section className={styles.presentation}>
           <h4 className={styles.presentationTitle}>Видеопрезентация</h4>
           <div>
-            <iframe src={video} className={styles.video} title='Видеопрезентация'/>
+            <iframe
+              src={video}
+              className={styles.video}
+              title="Видеопрезентация"
+            />
           </div>
           <h4 className={styles.presentationTitle}>
             Получите бесплатную консультацию от эксперта

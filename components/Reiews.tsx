@@ -1,23 +1,30 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { mockReviews } from '@/data/reviews';
 import styles from '@/styles/Reviews.module.css';
-
-const mockReviews = [
-  { id: 1, src: '/review_example.svg' },
-  { id: 2, src: '/review_example.svg' },
-  { id: 3, src: '/review_example.svg' },
-];
 
 export default function Reviews() {
   const [isOpen, setIsOpen] = useState(false);
 
+  useEffect(() => {
+    const handleEsc = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        setIsOpen(false);
+      }
+    };
+    document.addEventListener('keydown', handleEsc);
+    return () => document.removeEventListener('keydown', handleEsc);
+  }, []);
+
   return (
     <>
-      <button
-        type="button"
+      <div
         className={styles.reviewBlock}
+        role="button"
         onClick={() => setIsOpen(true)}
+        onKeyDown={(e) => e.key === 'Enter' && setIsOpen(true)}
+        tabIndex={0}
       >
         <img src="/reviews_clear.svg" alt="Отзывы" className={styles.image} />
         <img
@@ -26,7 +33,7 @@ export default function Reviews() {
           className={styles.hover}
           aria-hidden="true"
         />
-      </button>
+      </div>
 
       {isOpen && (
         <div
@@ -34,6 +41,7 @@ export default function Reviews() {
           onClick={() => setIsOpen(false)}
           role="dialog"
           aria-modal="true"
+          aria-label="Закрыть модальное окно"
         >
           <div
             className={styles.modalContent}
@@ -58,6 +66,7 @@ export default function Reviews() {
               type="button"
               className={styles.closeButton}
               onClick={() => setIsOpen(false)}
+              aria-label='Закрыть модальное окно'
             />
           </div>
         </div>

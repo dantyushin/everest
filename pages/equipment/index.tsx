@@ -1,6 +1,6 @@
 import { Section } from '@radix-ui/themes';
 import BaroCard from '@/components/BaroCard';
-import { barocams } from '@/data/barocams';
+import { mockBarocams } from '@/data/barocams';
 import styles from '@/styles/Equipment.module.css';
 
 export default function Equipment() {
@@ -8,7 +8,7 @@ export default function Equipment() {
     <Section className={styles.equipment}>
       <h1 className={styles.title}>Кислородные барокамеры Эверест</h1>
       <div className={styles.cards}>
-        {barocams.map(({ id, title, description, cost, img }) => (
+        {mockBarocams.map(({ id, title, description, cost, img }) => (
           <BaroCard
             key={id}
             id={id}

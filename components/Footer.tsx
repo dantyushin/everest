@@ -28,8 +28,12 @@ export default function Footer() {
         <div className={styles.license}>(c) ООО “Эверест” 2011-2024</div>
       </div>
       <div className={styles.contacts}>
-        <a href='mailto:everest-baro@mail.ru' className={styles.email}>everest-baro@mail.ru</a>
-        <a href='tel:+79111091399' className={styles.phone}>+7 (911) 109-13-99</a>
+        <a href="mailto:everest-baro@mail.ru" className={styles.email}>
+          everest-baro@mail.ru
+        </a>
+        <a href="tel:+79111091399" className={styles.phone}>
+          +7 (911) 109-13-99
+        </a>
       </div>
     </footer>
   );

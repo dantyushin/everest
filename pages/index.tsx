@@ -31,7 +31,10 @@ export default function Home() {
           </ul>
         </Section>
         <Section className={styles.marketing}>
-          <Link href={'/equipment'}><Button className={styles.button}>Заказать барокамеру</Button></Link>
+          <Button className={styles.button}>
+            <Link href={'/equipment'}>Заказать барокамеру</Link>
+          </Button>
+
           <h2 className={styles.description}>
             Компания “Эверест” - официальный производитель кислородных камер
             нового поколения

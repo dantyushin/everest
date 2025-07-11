@@ -1,9 +1,9 @@
 .reviewBlock {
   position: relative;
-  padding: 2rem;
+  margin: 2rem;
   cursor: pointer;
   border: none;
-  background: transparent
+  background: transparent;
 }
 .image {
   position: absolute;
@@ -41,7 +41,6 @@
 
 .closeButton {
   padding: 0.5rem 1rem;
-  background: transparent;
   color: white;
   border: none;
   background: transparent;
@@ -67,5 +66,5 @@
   overflow: auto;
 }
 .reviewItem {
-    max-width: fit-content;
+  max-width: fit-content;
 }

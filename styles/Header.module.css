@@ -7,7 +7,7 @@
 .logo {
   width: 3rem;
   height: 1.6rem;
-  margin-right: calc(11/16 * 1rem);
+  margin-right: calc(11 / 16 * 1rem);
 }
 
 .contacts {
@@ -62,11 +62,11 @@
 
   font-style: normal;
   font-weight: 300;
-  font-size: calc(11/16 * 1rem);
-  line-height: calc(13/16 * 1rem);
+  font-size: calc(11 / 16 * 1rem);
+  line-height: calc(13 / 16 * 1rem);
   text-align: center;
 
-  color: var(--white-color)
+  color: var(--white-color);
 }
 .row {
   height: 3px;
