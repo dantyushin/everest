@@ -91,7 +91,7 @@ export default function EquipmentDetail() {
           <h4 className={styles.presentationTitle}>Видеопрезентация</h4>
           <div>
             <iframe
-              src={video}
+              src={''}
               className={styles.video}
               title="Видеопрезентация"
             />

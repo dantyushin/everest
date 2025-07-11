@@ -2,6 +2,8 @@ import { useCallback, useState } from 'react';
 
 export function useFormCommon() {
   const [error, setError] = useState('');
+  const [name, setName] = useState('');
+  const [phone, setPhone] = useState('');
 
   const showError = useCallback((message: string) => {
     setError(message);
@@ -9,9 +11,6 @@ export function useFormCommon() {
       setError('');
     }, 2000);
   }, []);
-
-  const [name, setName] = useState('');
-  const [phone, setPhone] = useState('');
 
   const handleNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
