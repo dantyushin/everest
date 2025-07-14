@@ -12,7 +12,7 @@ export default function EquipmentDetail() {
   const { id } = router.query;
 
   const barocam = mockBarocams.find((item) => item.id === Number(id));
-  const { title, description, cost, img, images, information, video } =
+  const { title, description, cost, img, images, information } =
     barocam || {};
   if (!barocam) {
     return <p>Барокамера не найдена</p>;
