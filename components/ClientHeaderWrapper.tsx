@@ -38,7 +38,11 @@ export default function ClientHeaderWrapper() {
         </Modal>
       )}
 
-      {showToast && <MyToast open={showToast} setOpen={setShowToast} />}
+      {showToast && (
+        <MyToast open={showToast} setOpen={setShowToast}>
+          Заявка оформлена!
+        </MyToast>
+      )}
 
       <div className={styles.row}></div>
     </>

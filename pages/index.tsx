@@ -1,9 +1,9 @@
 import Head from 'next/head';
 import Link from 'next/link';
 import { Button, Section, Strong } from '@radix-ui/themes';
-import Connect from '@/components/ConnectMain';
+import LinkToPresentation from '@/components/LinkToPresentation';
+import ConnectForm from '@/components/ConnectForm';
 import styles from '@/styles/Home.module.css';
-import LearnMoreButton from '@/components/LearnMoreButton';
 
 export default function Home() {
   return (
@@ -18,7 +18,7 @@ export default function Home() {
           <h1 className={styles.title}>
             <Strong>Барокамеры Эверест</Strong> - капсулы нового поколения
           </h1>
-          <LearnMoreButton />
+          <LinkToPresentation>Узнать больше</LinkToPresentation>
         </Section>
         <Section>
           <ul className={styles.list}>
@@ -31,7 +31,10 @@ export default function Home() {
           </ul>
         </Section>
         <Section className={styles.marketing}>
-          <Button className={styles.button}>Заказать барокамеру</Button>
+          <Button className={styles.button}>
+            <Link href={'/equipment'}>Заказать барокамеру</Link>
+          </Button>
+
           <h2 className={styles.description}>
             Компания “Эверест” - официальный производитель кислородных камер
             нового поколения
@@ -71,7 +74,7 @@ export default function Home() {
           <Link href="/">
             <h3 className={styles.moreAbout}>Подробнее о компании</h3>
           </Link>
-          <Link href="/">
+          <Link href="/equipment">
             <h3 className={styles.allBaros}>Все барокамеры</h3>
           </Link>
         </Section>
@@ -127,7 +130,19 @@ export default function Home() {
             className={styles.challengesImages}
           />
         </Section>
-        <Connect />
+        <Section className={styles.connect}>
+          <h2 className={styles.titleConnect}>
+            Получите бесплатную консультацию от эксперта
+          </h2>
+          <div className={styles.form}>
+            <ConnectForm />
+          </div>
+          <img
+            src="/connect.svg"
+            alt="connect.svg"
+            className={styles.imageConnect}
+          />
+        </Section>
       </main>
     </>
   );

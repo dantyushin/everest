@@ -7,36 +7,38 @@ import styles from '@/styles/Toast.module.css';
 interface ToastProps {
   open: boolean;
   setOpen: Dispatch<SetStateAction<boolean>>;
+  children: string;
 }
 
-export default function MyToast({ open, setOpen }: ToastProps) {
+export default function MyToast({
+  open,
+  setOpen,
+  children,
+}: Readonly<ToastProps>) {
   return (
-    <>
-      <Toast.Provider swipeDirection="right">
-        <Toast.Root
-          className={styles.toastRoot}
-          open={open}
-          onOpenChange={setOpen}
-          duration={3000}
-        >
-          <Toast.Title className={styles.toastTitle}>
-            Заявка оформлена!
-          </Toast.Title>
-          <Toast.Action
-            className={styles.toastAction}
-            asChild
-            altText="Закрыть"
+    <Toast.Provider swipeDirection="right">
+      <Toast.Root
+        className={styles.toastRoot}
+        open={open}
+        onOpenChange={setOpen}
+        duration={3000}
+      >
+        <Toast.Title className={styles.toastTitle}>{children}</Toast.Title>
+        <Toast.Action className={styles.toastAction} asChild altText="Закрыть">
+          <button
+            type="button"
+            className={styles.closeButton}
+            onClick={() => setOpen(false)}
           >
             <img
               src="/close_icon.svg"
-              alt="close_icon.svg"
-              className={styles.closeButton}
-              onClick={() => setOpen(false)}
+              alt="Закрыть"
+              className={styles.closeIcon}
             />
-          </Toast.Action>
-        </Toast.Root>
-        <Toast.Viewport className={styles.toastViewport} />
-      </Toast.Provider>
-    </>
+          </button>
+        </Toast.Action>
+      </Toast.Root>
+      <Toast.Viewport className={styles.toastViewport} />
+    </Toast.Provider>
   );
 }

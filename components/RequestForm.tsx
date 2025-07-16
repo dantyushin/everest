@@ -6,7 +6,7 @@ import { IMaskInput } from 'react-imask';
 import styles from '@/styles/Modal.module.css';
 
 interface RequestFormProps {
-  onSuccess: () => void;
+  readonly onSuccess: () => void;
 }
 
 export default function RequestForm({ onSuccess }: RequestFormProps) {
@@ -46,7 +46,7 @@ export default function RequestForm({ onSuccess }: RequestFormProps) {
   const handleNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
 
-    const lettersOnly = value.replace(/[^a-zA-Zа-яА-ЯёЁ\s]/g, '');
+    const lettersOnly = value.replace(/[^a-zA-Zа-яА-ЯёЁ-\s]/g, '');
     setName(lettersOnly);
   };
 

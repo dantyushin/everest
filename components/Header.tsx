@@ -1,9 +1,8 @@
 import Link from 'next/link';
-import Image from 'next/image';
 import styles from '@/styles/Header.module.css';
 
 interface HeaderProps {
-  children?: React.ReactNode;
+  readonly children?: React.ReactNode;
 }
 
 export default function Header({ children }: HeaderProps) {
@@ -11,7 +10,7 @@ export default function Header({ children }: HeaderProps) {
     <header className={styles.header}>
       <div className={styles.logo}>
         <Link href={'/'}>
-          <Image src={'/logo.svg'} alt={'logo'} width={60} height={33.33} />
+          <img src="/logo.svg" alt="logo.svg" />
         </Link>
       </div>
       <div className={styles.contacts}>
@@ -24,7 +23,7 @@ export default function Header({ children }: HeaderProps) {
       </div>
       <nav className={styles.navList}>
         <li>
-          <Link href={'/'}>ОБОРУДОВАНИЕ</Link>
+          <Link href={'/equipment'}>ОБОРУДОВАНИЕ</Link>
         </li>
         <li>
           <Link href={'/'}>ПРИМЕНЕНИЕ</Link>

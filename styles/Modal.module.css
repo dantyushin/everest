@@ -23,6 +23,8 @@
   top: 2.5rem;
   right: 2.5rem;
   cursor: pointer;
+  border: none;
+  background: transparent;
 }
 
 .titleConnect {
@@ -33,61 +35,4 @@
   text-align: center;
 
   color: var(--main-color);
-}
-
-.form {
-  width: 41.125rem;
-  height: 25.875rem;
-
-  background: var(--white-color);
-  box-shadow: -4px 4px 20.4px var(--black-shadow-color);
-  border-radius: 39px;
-
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-  padding: 1rem;
-  margin-left: 2rem;
-  justify-content: center;
-  align-items: center;
-}
-.input {
-  box-sizing: border-box;
-
-  width: 33.1875rem;
-  height: 3.3125rem;
-
-  background: var(--white-color);
-  border: 2px solid #1a2847;
-  border-radius: 15px;
-  padding: 1.5rem;
-
-  font-size: 1rem;
-}
-.formButton {
-  width: 33.1875rem;
-  min-height: 3.25rem;
-
-  background: var(--main-color);
-  border-radius: 15px;
-  color: var(--white-color);
-  font-size: 1.2rem;
-
-  cursor: pointer;
-}
-
-.errorInput {
-  border: 2px solid red;
-  color: var(--red-color);
-}
-
-.error {
-  color: var(--red-color);
-  font-size: 1rem;
-  min-height: 1.8rem;
-  text-align: center;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
 }

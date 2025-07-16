@@ -26,11 +26,11 @@
   color: var(--main-color);
 }
 
-.toastAction button {
-  background: none;
-  border: none;
+.toastAction {
   color: var(--main-color);
   cursor: pointer;
+  border: none;
+  background: transparent;
 }
 
 .toastViewport {

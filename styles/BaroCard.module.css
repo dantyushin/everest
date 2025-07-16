@@ -1,0 +1,61 @@
+.card {
+  width: 16rem;
+  height: 19rem;
+
+  background: #ffffff;
+  box-shadow: -4px 4px 16.8px -1px var(--black-shadow-color);
+  border-radius: 1.5rem;
+  padding: 1.5rem;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  color: var(--main-color);
+}
+
+.image {
+  width: 13rem;
+  height: 10rem;
+
+  border-radius: 1.2rem;
+}
+.title {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 0.85rem;
+  line-height: 1.4rem;
+}
+.description {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 0.625rem;
+  line-height: 0.75rem;
+}
+.row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: baseline;
+}
+.cost {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 0.75rem;
+  line-height: 1rem;
+}
+.button {
+  padding: 0.1rem 1rem;
+
+  background: var(--main-color);
+  border-radius: 4px;
+
+  font-style: normal;
+  font-weight: 200;
+  font-size: 0.75rem;
+  line-height: 1rem;
+
+  cursor: pointer;
+
+  color: var(--white-color);
+}

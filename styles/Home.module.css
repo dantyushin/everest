@@ -233,3 +233,32 @@
   height: 44rem;
   border-radius: 0px 0px 100px 100px;
 }
+
+.connect {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: center;
+  margin: 2rem 0;
+}
+.titleConnect {
+  width: 100%;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 2.5rem;
+  line-height: 3rem;
+  text-align: center;
+
+  color: var(--main-color);
+  margin: 2rem 0;
+}
+.form {
+  width: 100%;
+  max-width: 24.125rem;
+  height: 20.875rem;
+}
+.imageConnect {
+  width: 30.875rem;
+  height: 21.4375rem;
+}
